@@ -13,7 +13,7 @@ html {
 
 body {
   width: 100%;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', 'Arial', sans-serif;
   overflow-x: hidden;
   font-size: 100%;
 }
@@ -33,6 +33,12 @@ button {
   cursor: pointer;
 }
 
+section {
+  min-height: 70vh;
+}
+
+/* Reusable classes */
+
 .input {
   padding: 12px;
   border-radius: 4px;
@@ -42,8 +48,6 @@ button {
   letter-spacing: -0.15px;
   color: #121212;
 }
-
-/* Reusable classes */
 
 .flex {
   display: flex;
@@ -67,19 +71,18 @@ button {
   --text-blue: #4386bf;
 }
 
-/* Page content Styling */
+/* Home Page content Styling */
 
 .app {
   background: var(--bg-gray);
 }
 
 .container {
-  box-shadow: 0px 5px 30px rgba(206, 201, 201, 0.679);
+  box-shadow: 0 5px 30px rgba(206, 201, 201, 0.679);
 }
 
 .home {
   background: var(--light-gray);
-  min-height: 100vh;
   padding: 4%;
 }
 
@@ -116,6 +119,7 @@ nav.flex,
 .nav-link:hover,
 .active {
   opacity: 1;
+  font-weight: 600;
 }
 
 .user-avatar {
@@ -162,7 +166,7 @@ nav.flex,
 }
 
 .book-title {
-  font-family: 'Roboto Slab';
+  font-family: 'Roboto Slab', serif;
   font-size: 1.4rem;
 }
 
@@ -230,6 +234,7 @@ nav.flex,
 
 .second-block h3 {
   opacity: 0.5;
+  text-transform: uppercase;
 }
 
 .second-block p {
@@ -275,6 +280,7 @@ nav.flex,
 .book-name-input {
   width: 50%;
 }
+
 .genre-input {
   width: 30%;
   cursor: pointer;
@@ -292,4 +298,13 @@ nav.flex,
   padding: 12px;
   border-radius: 3px;
   text-transform: uppercase;
+}
+
+/* Categories Page Styling */
+
+.categories {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
 }

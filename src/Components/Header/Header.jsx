@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 
 const Header = () => {
@@ -23,9 +23,9 @@ const Header = () => {
         </a>
         <ul className="nav-links flex">
           {links.map((link) => (
-            <Link key={link.id} to={link.path} className="nav-link">
+            <NavLink key={link.id} to={link.path} className="nav-link">
               {link.title}
-            </Link>
+            </NavLink>
           ))}
         </ul>
       </nav>

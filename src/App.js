@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Home from './Pages/Home';
 import Header from './Components/Header/Header';
+import Categories from './Pages/Categories';
 
 const App = () => (
   <div className="app limit lmt-block">
@@ -9,6 +10,7 @@ const App = () => (
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/categories" element={<Categories />} />
       </Routes>
     </div>
   </div>

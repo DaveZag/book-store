@@ -9,9 +9,11 @@ const Form = () => (
         required
       />
       <select className="genre-input input">
-        <option value="action">Action</option>
-        <option value="adventure">Adventure</option>
-        <option value="drama">Drama</option>
+        <option value="" disabled selected>
+          Select an author...
+        </option>
+        <option value="Marcel Proust">Marcel Proust</option>
+        <option value="Gabriel Garcia Marquez">Gabriel Garcia Marquez</option>
       </select>
 
       <button type="button" className="submit-btn">
