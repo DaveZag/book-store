@@ -83,7 +83,6 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - Microverse for the template and project structure.
-- Flaticon for the icons.
 
 ## 📝 License
 
