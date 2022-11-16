@@ -8,8 +8,8 @@ const Form = () => (
         placeholder="Book title..."
         required
       />
-      <select className="genre-input input">
-        <option value="" disabled selected>
+      <select className="genre-input input" defaultValue="DEFAULT">
+        <option value="DEFAULT" disabled>
           Select an author...
         </option>
         <option value="Marcel Proust">Marcel Proust</option>
