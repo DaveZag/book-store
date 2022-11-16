@@ -1,52 +1,48 @@
 import { PropTypes } from 'prop-types';
+import { useDispatch } from 'react-redux';
 import Button from './actionButtons';
+import { removeBook } from '../../../redux/books/books';
 
-const Book = ({
-  genre,
-  title,
-  author,
-  percentageCompleted,
-  currentChapter,
-}) => {
-  const buttonsArray = [
-    {
-      id: 1,
-      title: 'Comments',
-    },
-    {
-      id: 2,
-      title: 'Remove',
-    },
-    {
-      id: 3,
-      title: 'Edit',
-    },
-  ];
+const Book = ({ id, title, author }) => {
+  const dispatch = useDispatch();
+
+  const handleRemove = (bookId) => {
+    dispatch(removeBook({ id: bookId }));
+  };
 
   return (
     <div className="book-container flex">
       <div className="first-block flex">
         <div className="book-description flex flex-col">
-          <p className="book-genre">{genre}</p>
+          <p className="book-genre">Adventure</p>
           <h2 className="book-title">{title}</h2>
           <p className="book-author">{author}</p>
 
-          <ul className="action-buttons flex">
-            {buttonsArray.map((button) => (
-              <Button
-                key={button.id}
-                className="action-btn"
-                title={button.title}
-                onclick={() => {}}
-              />
-            ))}
-          </ul>
+          <div className="action-buttons flex">
+            <Button
+              className="action-btn"
+              title="Comments"
+              handleClick={() => {}}
+            />
+            <Button
+              className="action-btn"
+              title="Remove"
+              handleClick={() => {
+                handleRemove(id);
+              }}
+            />
+            <Button
+              className="action-btn"
+              title="Edit"
+              handleClick={() => {}}
+            />
+          </div>
         </div>
         <div className="book-progress flex">
           <div className="progress" />
 
-          <div className="progess-details">
-            <p className="percentage">{percentageCompleted}</p>
+          <div className="progress-details">
+            <p className="percentage">50%</p>
             <p className="completed">Completed</p>
           </div>
         </div>
@@ -55,12 +51,12 @@ const Book = ({
       <div className="second-block flex flex-col">
         <div className="progress-details">
           <h3>Current Chapter</h3>
-          <p>{currentChapter}</p>
+          <p>Chapter 3</p>
         </div>
 
         <Button
           title="Update progress"
-          onclick={() => {}}
+          handleClick={() => {}}
           className="progress-btn"
         />
       </div>
@@ -69,11 +65,9 @@ const Book = ({
 };
 
 Book.propTypes = {
-  genre: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
-  percentageCompleted: PropTypes.string.isRequired,
-  currentChapter: PropTypes.string.isRequired,
 };
 
 export default Book;
