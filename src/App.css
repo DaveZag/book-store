@@ -304,5 +304,22 @@ nav.flex,
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
+}
+
+.categories > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.check-btn {
+  padding: 1rem;
+  outline: none;
+  border: none;
+  background-color: #0290ff;
+  font-family: inherit;
+  color: #fff;
+  border-radius: 2rem;
 }

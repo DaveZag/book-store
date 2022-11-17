@@ -5,7 +5,8 @@ const categoriesSlice = createSlice({
   initialState: [],
   reducers: {
     checkStatus() {
-      return 'Under construction';
+      const message = 'Under construction 🙃';
+      return message;
     },
   },
 });
