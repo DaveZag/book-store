@@ -5,10 +5,11 @@ const categoriesSlice = createSlice({
   initialState: [],
   reducers: {
     checkStatus() {
-      return 'Under construction';
+      const message = 'Under construction 🙃';
+      return message;
     },
   },
 });
 
 export const { checkStatus } = categoriesSlice.actions;
-export default categoriesSlice;
+export default categoriesSlice.reducer;
