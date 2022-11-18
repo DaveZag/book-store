@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import books from './initialState';
+
 // prettier-ignore
 const url = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/wf8x6nL27HLKBPIE7Exv/';
 
@@ -12,21 +14,18 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
 });
 
 export const addBook = createAsyncThunk('books/addBook', async (data) => {
-  console.log(data);
-  const resp = await axios.post(`${url}books`, data);
-  console.log(resp.status);
+  await axios.post(`${url}books`, data);
   return data;
 });
 
 export const removeBook = createAsyncThunk('book/removeBook', async (id) => {
-  const resp = await axios.delete(`${url}books/${id}`);
-  console.log(resp.status);
+  await axios.delete(`${url}books/${id}`);
   return id;
 });
 
 const booksSlice = createSlice({
   name: 'books',
-  initialState: [],
+  initialState: books,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchBooks.fulfilled, (state, action) => {
@@ -48,6 +47,7 @@ const booksSlice = createSlice({
         category: action.payload.category,
       });
     });
+    // prettier-ignore
     builder.addCase(removeBook.fulfilled, (state, action) => {
       const newState = state.filter((book) => book.id !== action.payload);
       return newState;

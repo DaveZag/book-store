@@ -25,7 +25,7 @@ const Books = () => {
               key={book.id}
               id={book.id}
               title={book.title}
-              author="Mary Smith"
+              author="Marcel Proust"
               category={book.category}
             />
           ))}

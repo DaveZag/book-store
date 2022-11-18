@@ -13,7 +13,6 @@ const Form = () => {
 
   const handleChange = (e) => {
     setBookInfos({ ...bookInfos, [e.target.id]: e.target.value });
-    console.log(bookInfos);
   };
 
   const handleSubmit = (e) => {
