@@ -1,36 +1,28 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { v4 as uniqueId } from 'uuid';
+
 import { addBook } from '../../redux/books/books';
 
 const Form = () => {
   const dispatch = useDispatch();
-
   const [bookInfos, setBookInfos] = useState({
     title: '',
-    author: '',
+    category: '',
   });
 
-  const booksArrayLength = useSelector((state) => state.books.length);
-
   const handleChange = (e) => {
-    switch (e.target.id) {
-      case 'book-title':
-        setBookInfos({ ...bookInfos, title: e.target.value });
-        break;
-      case 'book-author':
-        setBookInfos({ ...bookInfos, author: e.target.value });
-        break;
-      default:
-        break;
-    }
+    setBookInfos({ ...bookInfos, [e.target.id]: e.target.value });
+    console.log(bookInfos);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newBook = {
-      id: booksArrayLength === 0 ? 0 : booksArrayLength + 1,
+      item_id: uniqueId(),
       title: bookInfos.title,
-      author: bookInfos.author,
+      author: 'Marcel Proust',
+      category: bookInfos.category,
     };
     dispatch(addBook(newBook));
   };
@@ -42,16 +34,16 @@ const Form = () => {
         <input
           type="text"
           className="book-name-input input"
-          id="book-title"
+          id="title"
           placeholder="Book title..."
           onChange={handleChange}
           required
         />
         <input
           type="text"
-          className="author-input input"
-          placeholder="Author name..."
-          id="book-author"
+          className="category-input input"
+          placeholder="Genre/Category..."
+          id="category"
           onChange={handleChange}
         />
 

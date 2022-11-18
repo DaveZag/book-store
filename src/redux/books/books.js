@@ -1,40 +1,58 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+// prettier-ignore
+const url = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/wf8x6nL27HLKBPIE7Exv/';
 
-const bookArray = [
-  {
-    id: 0,
-    genre: 'Action',
-    title: 'In Search of Lost Time',
-    author: 'Marcel Proust',
-    percentageCompleted: '80%',
-    currentChapter: 'Chapter 6',
-  },
-  {
-    id: 1,
-    genre: 'Adventure',
-    title: ' One Hundred Years of Solitude',
-    author: 'Gabriel Garcia Marquez',
-    percentageCompleted: '10%',
-    currentChapter: 'Chapter 2',
-  },
-];
+export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
+  const resp = await axios.get(`${url}books`);
+  if (resp.data) {
+    return resp.data;
+  }
+  return [];
+});
+
+export const addBook = createAsyncThunk('books/addBook', async (data) => {
+  console.log(data);
+  const resp = await axios.post(`${url}books`, data);
+  console.log(resp.status);
+  return data;
+});
+
+export const removeBook = createAsyncThunk('book/removeBook', async (id) => {
+  const resp = await axios.delete(`${url}books/${id}`);
+  console.log(resp.status);
+  return id;
+});
 
 const booksSlice = createSlice({
   name: 'books',
-  initialState: bookArray,
-  reducers: {
-    addBook(state, action) {
-      state.push({
-        id: action.payload.id,
-        title: action.payload.title,
-        author: action.payload.author,
+  initialState: [],
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchBooks.fulfilled, (state, action) => {
+      const newState = state;
+      Object.entries(action.payload).forEach((element) => {
+        newState.push({
+          id: element[0],
+          title: element[1][0].title,
+          category: element[1][0].category,
+        });
       });
-    },
-    removeBook(state, action) {
-      return state.filter((book) => book.id !== action.payload.id);
-    },
+      return newState;
+    });
+
+    builder.addCase(addBook.fulfilled, (state, action) => {
+      state.push({
+        id: action.payload.item_id,
+        title: action.payload.title,
+        category: action.payload.category,
+      });
+    });
+    builder.addCase(removeBook.fulfilled, (state, action) => {
+      const newState = state.filter((book) => book.id !== action.payload);
+      return newState;
+    });
   },
 });
 
-export const { addBook, removeBook } = booksSlice.actions;
 export default booksSlice.reducer;
