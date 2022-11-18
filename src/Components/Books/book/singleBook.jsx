@@ -3,18 +3,23 @@ import { useDispatch } from 'react-redux';
 import Button from './actionButtons';
 import { removeBook } from '../../../redux/books/books';
 
-const Book = ({ id, title, author }) => {
+const Book = ({
+  id,
+  title,
+  author,
+  category,
+}) => {
   const dispatch = useDispatch();
 
   const handleRemove = (bookId) => {
-    dispatch(removeBook({ id: bookId }));
+    dispatch(removeBook(bookId));
   };
 
   return (
     <div className="book-container flex">
       <div className="first-block flex">
         <div className="book-description flex flex-col">
-          <p className="book-genre">Adventure</p>
+          <p className="book-genre">{category}</p>
           <h2 className="book-title">{title}</h2>
           <p className="book-author">{author}</p>
 
@@ -65,7 +70,8 @@ const Book = ({ id, title, author }) => {
 };
 
 Book.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
 };
