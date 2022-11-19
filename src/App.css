@@ -8,7 +8,7 @@
 
 body,
 html {
-  box-sizing: inherit;
+  height: 100%;
 }
 
 body {
@@ -31,6 +31,10 @@ ol {
 button {
   font-family: 'Roboto Slab', sans-serif;
   cursor: pointer;
+}
+
+button:hover:not(.action-btn) {
+  background-color: #4386bf;
 }
 
 section {
@@ -100,6 +104,10 @@ section {
   color: #0290ff;
 }
 
+.logo:hover {
+  color: #4386bf;
+}
+
 nav.flex,
 .nav-links {
   gap: 1rem;
@@ -132,8 +140,20 @@ nav.flex,
   align-items: center;
 }
 
+.user-avatar:hover {
+  cursor: pointer;
+}
+
 .user-avatar > svg {
   color: #0290ff;
+}
+
+.user-avatar:hover svg {
+  color: #4386bf;
+}
+
+.book-list {
+  width: 100%;
 }
 
 .book-container {
@@ -189,6 +209,10 @@ nav.flex,
   font-size: 0.87rem;
 }
 
+.action-btn:hover {
+  color: #0290ff;
+}
+
 .action-btn:first-child {
   padding-left: 0;
 }
@@ -198,7 +222,7 @@ nav.flex,
   align-items: center;
   gap: 0.6rem;
   border-right: 1.5px solid rgba(128, 127, 127, 0.426);
-  padding: 0 5rem;
+  padding: 0 5%;
 }
 
 .progress {
