@@ -1,8 +1,8 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# BookStore
+# Book Store
 
->
+>This project is a SPA that display Books and allows users to Add and  Remove them.
 
 ## Built With
 
@@ -48,7 +48,7 @@ npm start
 
 ## Repo Links
 
-- Repository: [Math magician](https://github.com/DaveZag/book-store)
+- Repository: [Book-Store](https://github.com/DaveZag/book-store)
 
 ## Author
 
