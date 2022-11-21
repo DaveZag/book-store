@@ -11,16 +11,6 @@
 - Node.js (npm).
 - Jest(for testing).
 
-## Live Demo (if available)
-
-[**See Project 🚀**](https://)
-
-## Screenshot
-
-### Desktop
-
-![Preview](./preview/preview.png)
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
